@@ -39,48 +39,13 @@ namespace task9 {
 
     class Fish : Animal {
         public Fish(string n, int el) : base(n, el) { }
-
-        public override void updateExhilLevel(Day day) {
-            if(day.isGood()) {
-                setExhilLevel(getExhilLevel() + 1);
-            }
-            else if(day.isOrdinary()) {
-                setExhilLevel(getExhilLevel() - 3);
-            }
-            else if(day.isBad()) {
-                setExhilLevel(getExhilLevel() - 5);
-            }
-        }
     }
     
     class Bird : Animal {
         public Bird(string n, int el) : base(n, el) { }
-
-        public override void updateExhilLevel(Day day) {
-            if(day.isGood()) {
-                setExhilLevel(getExhilLevel() + 2);
-            }
-            else if(day.isOrdinary()) {
-                setExhilLevel(getExhilLevel() - 1);
-            }
-            else if(day.isBad()) {
-                setExhilLevel(getExhilLevel() - 3);
-            }
-        }
     }
 
     class Dog : Animal {
         public Dog(string n, int el) : base(n, el) { }
-
-        public override void updateExhilLevel(Day day) {
-            if(day.isGood()) {
-                setExhilLevel(getExhilLevel() + 3);
-            }
-            else if(day.isOrdinary()) {
-            }
-            else if(day.isBad()) {
-                setExhilLevel(getExhilLevel() - 10);
-            }
-        }
     }
 }

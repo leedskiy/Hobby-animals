@@ -5,48 +5,33 @@ using System.Diagnostics;
 namespace task9 {
     abstract class Day {
         protected Day() {}
-        protected virtual void updateExhilLevel(ref List<Animal> ans) {}
-        protected virtual void updateFish(ref Animal a) {}
-        protected virtual void updateBird(ref Animal a) {}
-        protected virtual void updateDog(ref Animal a) {}
+        public virtual void updateFish(Animal a) {}
+        public virtual void updateBird(Animal a) {}
+        public virtual void updateDog(Animal a) {}
     }
 
     class GoodDay : Day {
-        private static goodDay instance;
-        private goodDay() {}
+        private static GoodDay instance;
+        private GoodDay() {}
 
-        public static goodDay Instance() {
+        public static GoodDay Instance() {
             if(instance == null) {
-                instance = new goodDay();
+                instance = new GoodDay();
             }
 
             return instance;
         }
 
-        private override void updateFish(ref Animal a) {
+        public override void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 1);
         }
 
-        private override void updateBird(ref Animal a) {
+        public override void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 2);
         }
 
-        private override void updateDog(ref Animal a) {
+        public override void updateDog(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 3);
-        }
-
-        public override void updateExhilLevel(ref List<Animal> ans) {
-            foreach (Animal a in ans) {
-                if(a is Fish){
-                    updateFish(ref a);
-                }
-                else if(a is Bird) {
-                    updateBird(ref a);
-                }
-                else if(a is Dog) {
-                    updateDog(ref a);
-                }
-            }
         }
     }
 
@@ -62,29 +47,15 @@ namespace task9 {
             return instance;
         }
 
-        private override void updateFish(ref Animal a) {
+        public override void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 3);
         }
 
-        private override void updateBird(ref Animal a) {
+        public override void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 1);
         }
 
-        private override void updateDog(ref Animal a) { }
-
-        public override void updateExhilLevel(ref List<Animal> ans) {
-            foreach (Animal a in ans) {
-                if(a is Fish){
-                    updateFish(ref a);
-                }
-                else if(a is Bird) {
-                    updateBird(ref a);
-                }
-                else if(a is Dog) {
-                    updateDog(ref a);
-                }
-            }
-        }
+        public override void updateDog(Animal a) { }
     }
 
     class BadDay : Day {
@@ -99,34 +70,16 @@ namespace task9 {
             return instance;
         }
 
-        private override void updateFish(ref Animal a) {
+        public override void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 5);
         }
 
-        private override void updateBird(ref Animal a) {
+        public override void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 3);
         }
 
-        private override void updateDog(ref Animal a) {
+        public override void updateDog(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 10);
         }
-
-        public override void updateExhilLevel(ref List<Animal> ans) {
-            foreach (Animal a in ans) {
-                if(a is Fish){
-                    updateFish(ref a);
-                }
-                else if(a is Bird) {
-                    updateBird(ref a);
-                }
-                else if(a is Dog) {
-                    updateDog(ref a);
-                }
-            }
-        }
     }
-
-   
-
-
 }

@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace task9 {
     class Person {
+        public class AllAnimalsDied : Exception { };
+
         private string name;
         private Day day;
         private List<Animal> animals;
@@ -17,7 +19,7 @@ namespace task9 {
             name = n;
         }
 
-        public string getName(string n) {
+        public string getName() {
             return name;
         }
 
@@ -54,9 +56,51 @@ namespace task9 {
         }
 
         public void takeCare() {
-            day.updateExhilLevel(ref animals);
+            foreach(Animal a in animals) {
+                if(a is Fish){
+                    day.updateFish(a);
+                }
+                else if(a is Bird) {
+                    day.updateBird(a);
+                }
+                else if(a is Dog) {
+                    day.updateDog(a);
+                }
+            }
         }
 
+        public List<Animal> getLowestELAnimals() {
+            bool found = false;
+            int i = 0;
+            int lowestEL = 0;
+            List<Animal> lowests = new List<Animal>();
+
+            for (; i < animals.Count && !found; ++i) {
+                if(animals[i].getExhilLevel() > 0){
+                    lowestEL = animals[i].getExhilLevel();
+                    lowests.Add(animals[i]);
+                    found = true;
+                }
+            }
+            
+            if(!found) {
+                throw new AllAnimalsDied();
+            }
+
+            for(; i < animals.Count; ++i) {
+                if(animals[i].getExhilLevel() > 0 && animals[i].getExhilLevel() < lowestEL) {
+                    lowests.Clear();
+                    lowestEL = animals[i].getExhilLevel();
+                    lowests.Add(animals[i]);
+                }
+                else if(animals[i].getExhilLevel() > 0 && animals[i].getExhilLevel() == lowestEL) {
+                    lowests.Add(animals[i]);
+                }
+            }
+
+            return lowests;
+        }
+        
         public override string ToString()
         {
             string temp = "";
