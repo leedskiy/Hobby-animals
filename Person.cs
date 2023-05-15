@@ -24,13 +24,13 @@ namespace task9 {
         public void setDay(char d) {
             switch(d) {
                 case 'g':
-                    day = new goodDay();
+                    day = GoodDay.Instance();
                     break;
                 case 'o':
-                    day = new ordinaryDay();
+                    day = OrdinaryDay.Instance();
                     break;
                 case 'b':
-                    day = new badDay();
+                    day = BadDay.Instance();
                     break;
             }
         }
@@ -54,7 +54,7 @@ namespace task9 {
         }
 
         public void takeCare() {
-            day.updateExhilLevel();
+            day.updateExhilLevel(ref animals);
         }
 
         public override string ToString()
