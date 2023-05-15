@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace task9 {
     abstract class Animal {
         private string name;
         private int exhilLevel;
 
-        public Animal(string n, int el) {
+        protected Animal(string n, int el) {
             name = n;
             exhilLevel = el;
         }
@@ -29,20 +30,15 @@ namespace task9 {
         }
 
         public virtual void updateExhilLevel(Day day) {}
+
+        public override string ToString()
+        {
+            return "(" + GetType() + ", " + getName() + ", " + getExhilLevel() + ")" + " ";
+        }
     }
 
     class Fish : Animal {
-        private static Fish instance;
-
-        public static Fish Instance()
-        {
-            if (instance == null)
-            {
-                instance = new Fish();
-            }
-
-            return instance;
-        }
+        public Fish(string n, int el) : base(n, el) { }
 
         public override void updateExhilLevel(Day day) {
             if(day.isGood()) {
@@ -58,17 +54,7 @@ namespace task9 {
     }
     
     class Bird : Animal {
-        private static Bird instance;
-
-        public static Bird Instance()
-        {
-            if (instance == null)
-            {
-                instance = new Bird();
-            }
-
-            return instance;
-        }
+        public Bird(string n, int el) : base(n, el) { }
 
         public override void updateExhilLevel(Day day) {
             if(day.isGood()) {
@@ -84,17 +70,7 @@ namespace task9 {
     }
 
     class Dog : Animal {
-        private static Dog instance;
-
-        public static Dog Instance()
-        {
-            if (instance == null)
-            {
-                instance = new Dog();
-            }
-
-            return instance;
-        }
+        public Dog(string n, int el) : base(n, el) { }
 
         public override void updateExhilLevel(Day day) {
             if(day.isGood()) {
