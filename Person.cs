@@ -7,9 +7,9 @@ namespace task9 {
         string name;
         List<Animal> animals;
 
-        public Person(string n) {
+        public Person(string n, int c) {
             name = n;
-            animals = new List<Animal>();
+            animals = new List<Animal>(c);
         }
 
         public void addAnimal(string an, string n, int el) {
@@ -34,14 +34,6 @@ namespace task9 {
 
         public override string ToString()
         {
-            //string temp = "";
-
-            //foreach (Animal a in animals)
-            //{
-            //    temp += "(" + a.GetType() + ", " + a.getName() + ", " + a.getExhilLevel() + ")" + " ";
-            //}
-
-            //return temp;
             string temp = "";
 
             foreach (Animal a in animals)
