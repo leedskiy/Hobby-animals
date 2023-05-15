@@ -8,19 +8,21 @@ namespace task9
         public class EmptyFileError : Exception { };
         static void Main(string[] args)
         {
-            //p1.addAnimal("fish","Nemo", 50);
-            //p1.addAnimal("fish","Nemo", 50);
-            //p1.addAnimal("fish","Nemo", 50);
-
             TextFileReader f = new TextFileReader("input.txt");
             int count = 0;
-            char animal = '0';
-            string name = "";
-            int exLevel = 0;
 
             bool l = f.ReadInt(out count);
 
+            if(!l)
+            {
+                throw new EmptyFileError();
+            }
+
             Person p1 = new Person("Cathy", count);
+
+            char animal = '0';
+            string name = "";
+            int exLevel = 0;
 
             for (int i = 0; i < count && l; ++i)
             {
@@ -28,19 +30,30 @@ namespace task9
                 l = l && f.ReadString(out name);
                 l = l && f.ReadInt(out exLevel);
 
-                switch(animal)
-                {
-                    case 'F':
-                        p1.addAnimal("fish", name, exLevel);
-                        break;
-                    case 'B':
-                        p1.addAnimal("bird", name, exLevel);
-                        break;
-                    case 'D':
-                        p1.addAnimal("dog", name, exLevel);
-                        break;
-                }
+                p1.addAnimal(animal, name, exLevel);
             }
+
+            if (!l)
+            {
+                throw new EmptyFileError();
+            }
+
+            string temp = "";
+
+            l = l && f.ReadString(out temp);
+
+            if (!l)
+            {
+                throw new EmptyFileError();
+            }
+
+            //char[] days = new char[temp.Length];
+
+            for(int i = 0; i < temp.Length; ++i)
+            {
+                
+            }
+
 
             Console.WriteLine(p1.ToString());
         }
