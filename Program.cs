@@ -40,19 +40,8 @@ namespace task9
                 p1.addAnimal(animal, name, exLevel);
             }
 
-            if (!l)
-            {
-                throw new EmptyFileError();
-            }
-
             string temp = "";
-
             l = l && f.ReadString(out temp);
-
-            if (!l)
-            {
-                throw new EmptyFileError();
-            }
 
             for(int i = 0; i < temp.Length; ++i)
             {
@@ -69,7 +58,7 @@ namespace task9
             Console.WriteLine(lwsAns);
             Console.WriteLine();
 
-            Console.WriteLine("List of " + p1.getName() + "'s animals:");
+            Console.WriteLine("List of all " + p1.getName() + "'s animals:");
             Console.WriteLine(p1.ToString());
         }
     }

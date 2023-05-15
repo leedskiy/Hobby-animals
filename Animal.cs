@@ -29,8 +29,6 @@ namespace task9 {
             exhilLevel = el;
         }
 
-        public virtual void updateExhilLevel(Day day) {}
-
         public override string ToString()
         {
             return "(" + GetType() + ", " + getName() + ", " + getExhilLevel() + ")" + " ";
