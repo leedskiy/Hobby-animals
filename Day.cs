@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace task9 {
-    abstract class Day {
-        protected Day() {}
-        public virtual void updateFish(Animal a) {}
-        public virtual void updateBird(Animal a) {}
-        public virtual void updateDog(Animal a) {}
+    interface IDay {
+        void updateFish(Animal a);
+        void updateBird(Animal a);
+        void updateDog(Animal a);
     }
 
-    class GoodDay : Day {
+    class GoodDay : IDay {
         private static GoodDay instance;
         private GoodDay() {}
 
@@ -22,20 +21,20 @@ namespace task9 {
             return instance;
         }
 
-        public override void updateFish(Animal a) {
+        public void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 1);
         }
 
-        public override void updateBird(Animal a) {
+        public void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 2);
         }
 
-        public override void updateDog(Animal a) {
+        public void updateDog(Animal a) {
             a.setExhilLevel(a.getExhilLevel() + 3);
         }
     }
 
-    class OrdinaryDay : Day {
+    class OrdinaryDay : IDay {
         private static OrdinaryDay instance;
         private OrdinaryDay() {}
 
@@ -47,18 +46,18 @@ namespace task9 {
             return instance;
         }
 
-        public override void updateFish(Animal a) {
+        public void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 3);
         }
 
-        public override void updateBird(Animal a) {
+        public void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 1);
         }
 
-        public override void updateDog(Animal a) { }
+        public void updateDog(Animal a) { }
     }
 
-    class BadDay : Day {
+    class BadDay : IDay {
         private static BadDay instance;
         private BadDay() {}
 
@@ -70,15 +69,15 @@ namespace task9 {
             return instance;
         }
 
-        public override void updateFish(Animal a) {
+        public void updateFish(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 5);
         }
 
-        public override void updateBird(Animal a) {
+        public void updateBird(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 3);
         }
 
-        public override void updateDog(Animal a) {
+        public void updateDog(Animal a) {
             a.setExhilLevel(a.getExhilLevel() - 10);
         }
     }

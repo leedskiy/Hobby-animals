@@ -7,7 +7,7 @@ namespace task9 {
         public class AllAnimalsDied : Exception { };
 
         private string name;
-        private Day day;
+        private IDay day;
         private List<Animal> animals;
 
         public Person(string n, int c) {
@@ -37,25 +37,25 @@ namespace task9 {
                     day = GoodDay.Instance();
                     break;
                 case 'o':
-                    day = OrdinaryDay.Instance();
-
                     if(everyELevelAtl5()) {
                         day = GoodDay.Instance();
+                        break;
                     }
 
+                    day = OrdinaryDay.Instance();
                     break;
                 case 'b':
-                    day = BadDay.Instance();
-
                     if(everyELevelAtl5()) {
                         day = OrdinaryDay.Instance();
+                        break;
                     }
 
+                    day = BadDay.Instance();
                     break;
             }
         }
 
-        public Day getDay() {
+        public IDay getDay() {
             return day;
         }
 
