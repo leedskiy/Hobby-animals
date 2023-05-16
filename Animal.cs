@@ -17,10 +17,6 @@ namespace task9 {
             return name;
         }
 
-        public void setName(string n) {
-            name = n;
-        }
-
         public int getExhilLevel() {
             return exhilLevel;
         }

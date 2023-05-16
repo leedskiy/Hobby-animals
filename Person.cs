@@ -15,12 +15,20 @@ namespace task9 {
             animals = new List<Animal>(c);
         }
 
-        public void setName(string n) {
-            name = n;
-        }
-
         public string getName() {
             return name;
+        }
+
+        private bool everyELevelAtl5() {
+            bool greater = true;
+            
+            for(int i = 0; i < animals.Count && greater; ++i) {
+                if(animals[i].getExhilLevel() < 5) {
+                    greater = false;
+                }
+            }
+
+            return greater;
         }
 
         public void setDay(char d) {
@@ -30,9 +38,19 @@ namespace task9 {
                     break;
                 case 'o':
                     day = OrdinaryDay.Instance();
+
+                    if(everyELevelAtl5()) {
+                        day = GoodDay.Instance();
+                    }
+
                     break;
                 case 'b':
                     day = BadDay.Instance();
+
+                    if(everyELevelAtl5()) {
+                        day = OrdinaryDay.Instance();
+                    }
+
                     break;
             }
         }
