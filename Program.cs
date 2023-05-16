@@ -49,6 +49,10 @@ namespace task9
                 p1.takeCare();
             }
 
+            Console.WriteLine("List of all " + p1.getName() + "'s animals:");
+            Console.WriteLine(p1.ToString());
+            Console.WriteLine();
+            
             Console.WriteLine("Animal(s) with the lowest level of exhilaration which is/are still alive:");
             string lwsAns = "";
             foreach(Animal a in p1.getLowestELAnimals())
@@ -56,10 +60,6 @@ namespace task9
                 lwsAns += a + " ";
             }
             Console.WriteLine(lwsAns);
-            Console.WriteLine();
-
-            Console.WriteLine("List of all " + p1.getName() + "'s animals:");
-            Console.WriteLine(p1.ToString());
         }
     }
 }
