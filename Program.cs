@@ -10,12 +10,17 @@ namespace task9
 
         static void Main(string[] args)
         {
-            TextFileReader f = new TextFileReader("input.txt");
+            start("input.txt");
+        }
+
+        static void start(string fileName)
+        {
+            TextFileReader f = new TextFileReader(fileName);
             int count = 0;
 
             bool l = f.ReadInt(out count);
 
-            if(!l)
+            if (!l)
             {
                 throw new EmptyFileError();
             }
@@ -31,8 +36,8 @@ namespace task9
                 l = l && f.ReadChar(out animal);
                 l = l && f.ReadString(out name);
                 l = l && f.ReadInt(out exLevel);
-                
-                if(exLevel < 0 || exLevel > 100)
+
+                if (exLevel < 0 || exLevel > 100)
                 {
                     throw new IncorrectExhilLevel();
                 }
@@ -43,7 +48,7 @@ namespace task9
             string temp = "";
             l = l && f.ReadString(out temp);
 
-            for(int i = 0; i < temp.Length; ++i)
+            for (int i = 0; i < temp.Length; ++i)
             {
                 p1.setDay(temp[i]);
                 p1.takeCare();
@@ -52,10 +57,10 @@ namespace task9
             Console.WriteLine("List of all " + p1.getName() + "'s animals:");
             Console.WriteLine(p1.ToString());
             Console.WriteLine();
-            
+
             Console.WriteLine("Animal(s) with the lowest level of exhilaration which is/are still alive:");
             string lwsAns = "";
-            foreach(Animal a in p1.getLowestELAnimals())
+            foreach (Animal a in p1.getLowestELAnimals())
             {
                 lwsAns += a + " ";
             }
