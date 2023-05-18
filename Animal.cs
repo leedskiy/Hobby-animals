@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 
 namespace task9 {
-    abstract class Animal {
+    public abstract class Animal {
         private string name;
         private int exhilLevel;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace task9 {
-    class Person {
+    public class Person {
         public class AllAnimalsDied : Exception { };
 
         private string name;

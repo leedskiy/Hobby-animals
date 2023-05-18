@@ -10,12 +10,7 @@ namespace task9
 
         static void Main(string[] args)
         {
-            start("input.txt");
-        }
-
-        static void start(string fileName)
-        {
-            TextFileReader f = new TextFileReader(fileName);
+            TextFileReader f = new TextFileReader("input.txt");
             int count = 0;
 
             bool l = f.ReadInt(out count);

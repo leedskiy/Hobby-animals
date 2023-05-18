@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace task9 {
-    interface IDay {
+    public interface IDay {
         void updateFish(Animal a);
         void updateBird(Animal a);
         void updateDog(Animal a);
