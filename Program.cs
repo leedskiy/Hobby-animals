@@ -40,6 +40,10 @@ namespace task9
                 p1.addAnimal(animal, name, exLevel);
             }
 
+            Console.WriteLine("List of all " + p1.getName() + "'s animals before the simulation:");
+            Console.WriteLine(p1.ToString());
+            Console.WriteLine();
+
             string temp = "";
             l = l && f.ReadString(out temp);
 
@@ -49,7 +53,7 @@ namespace task9
                 p1.takeCare();
             }
 
-            Console.WriteLine("List of all " + p1.getName() + "'s animals:");
+            Console.WriteLine("List of all " + p1.getName() + "'s animals after the simulation:");
             Console.WriteLine(p1.ToString());
             Console.WriteLine();
 
